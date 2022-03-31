@@ -1,0 +1,3 @@
+type PostMetadata = {
+  title: string;
+}

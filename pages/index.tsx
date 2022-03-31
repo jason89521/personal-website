@@ -17,7 +17,7 @@ const Home: NextPage = () => {
       </Head>
 
       <header className="py-32">
-        <h1 className="text-center font-serif text-6xl capitalize">A front-end developer</h1>
+        <h1 className="text-center font-serif text-8xl capitalize">A front-end developer</h1>
       </header>
 
       <section className="py-4">

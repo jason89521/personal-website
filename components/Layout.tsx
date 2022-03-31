@@ -27,18 +27,18 @@ const Layout = ({ children }: Props) => {
           </Link>
 
           <Link href="/blog">
-            <a className="text-lg">blog</a>
+            <a className="text-lg transition-transform hover:-translate-y-1">blog</a>
           </Link>
 
           <Link href="/portfolio">
-            <a className="text-lg">portfolio</a>
+            <a className="text-lg transition-transform hover:-translate-y-1">portfolio</a>
           </Link>
 
           <label className="ml-auto cursor-pointer">
             <SvgSprite
               category="theme"
               symbolId={isLightMode ? 'sun' : 'moon'}
-              className="h-8 w-8 fill-yellow-400 dark:fill-slate-50"
+              className="h-8 w-8 fill-slate-500 transition-transform hover:scale-125 dark:fill-slate-50"
             />
             <input
               type="checkbox"
