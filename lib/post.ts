@@ -5,6 +5,9 @@ import matter from 'gray-matter';
 
 const postsPath = path.join(process.cwd(), 'posts');
 
+/**
+ * Return query parameters, should be used with `getStaticPaths`
+ */
 const getPostPaths = () => {
   const posts = fs.readdirSync(postsPath);
   const paths = posts.map(post => {
@@ -18,13 +21,19 @@ const getPostPaths = () => {
   return paths;
 };
 
-const getPostData = (post: string): { metadata: PostMetadata; excerpt: string; content: string; post: string } => {
+/**
+ * Get the data of `{post}.md`
+ */
+const getPostData = (post: string): { metadata: PostMetadata; excerpt: string; content: string } => {
   const filePath = path.join(postsPath, `${post}.md`);
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, excerpt, content } = matter(fileContent, { excerpt_separator: '<!-- more -->' });
-  return { metadata: data as PostMetadata, excerpt: excerpt as string, content, post };
+  return { metadata: data as PostMetadata, excerpt: excerpt as string, content };
 };
 
+/**
+ * Get all posts' metadata and excerpt. Use post's file name to be an id.
+ */
 const getPostPreviews = () => {
   const files = fs.readdirSync(postsPath);
   const previews = files.map(file => {
