@@ -43,7 +43,9 @@ const Post: NextPage<Props> = ({ metadata, content }) => {
         <title>{title}</title>
       </Head>
 
-      <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
+      <ReactMarkdown rehypePlugins={[rehypeRaw]} linkTarget="_blank">
+        {content}
+      </ReactMarkdown>
     </div>
   );
 };

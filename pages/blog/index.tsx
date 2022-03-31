@@ -1,4 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next';
+import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 
 import { getPostPreviews } from 'lib/post';
@@ -18,18 +19,33 @@ export const getStaticProps: GetStaticProps<Props> = () => {
 
 const Blog: NextPage<Props> = ({ previews }: Props) => {
   return (
-    <div>
-      <ul>
-        {previews.map(preview => {
-          const { metadata, excerpt, id } = preview;
-          return (
-            <li key={id} className="prose mx-auto mt-16 dark:prose-invert">
-              <ReactMarkdown linkTarget="_blank">{excerpt}</ReactMarkdown>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <ul className="pb-10">
+      {previews.map(preview => {
+        const { excerpt, id } = preview;
+        return (
+          <li key={id} className="prose mx-auto border-b py-10 dark:prose-invert">
+            <ReactMarkdown
+              components={{
+                h1: ({ node, children, ...rest }) => {
+                  return (
+                    <Link href={`/blog/${id}`} passHref>
+                      <a>
+                        <h1 className="inline-block underline" {...rest}>
+                          {children}
+                        </h1>
+                      </a>
+                    </Link>
+                  );
+                },
+              }}
+              linkTarget="_blank"
+            >
+              {excerpt}
+            </ReactMarkdown>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 
