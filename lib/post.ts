@@ -10,7 +10,7 @@ const getPostPaths = () => {
   const paths = posts.map(post => {
     return {
       params: {
-        post,
+        post: post.slice(0, -3),
       },
     };
   });
@@ -18,11 +18,22 @@ const getPostPaths = () => {
   return paths;
 };
 
-const getPostData = (post: string): { metadata: PostMetadata; content: string } => {
+const getPostData = (post: string): { metadata: PostMetadata; excerpt: string; content: string; post: string } => {
   const filePath = path.join(postsPath, `${post}.md`);
   const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const { data, content } = matter(fileContent);
-  return { metadata: data as PostMetadata, content };
+  const { data, excerpt, content } = matter(fileContent, { excerpt_separator: '<!-- more -->' });
+  return { metadata: data as PostMetadata, excerpt: excerpt as string, content, post };
 };
 
-export { getPostPaths, getPostData };
+const getPostPreviews = () => {
+  const files = fs.readdirSync(postsPath);
+  const previews = files.map(file => {
+    const post = file.slice(0, -3);
+    const { metadata, excerpt } = getPostData(post);
+    return { metadata, excerpt, id: file };
+  });
+
+  return previews;
+};
+
+export { getPostPaths, getPostData, getPostPreviews };

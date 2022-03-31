@@ -1,5 +1,6 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 
 import { getPostPaths, getPostData } from 'lib/post';
 import Head from 'next/head';
@@ -37,12 +38,12 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 const Post: NextPage<Props> = ({ metadata, content }) => {
   const { title } = metadata;
   return (
-    <div className="prose mx-auto dark:prose-invert py-10">
+    <div className="prose mx-auto py-10 dark:prose-invert">
       <Head>
         <title>{title}</title>
       </Head>
 
-      <ReactMarkdown>{content}</ReactMarkdown>
+      <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
     </div>
   );
 };
