@@ -45,6 +45,7 @@ const Post: NextPage<Props> = ({ metadata, content }) => {
     <div className="prose mx-auto py-10 dark:prose-invert">
       <Head>
         <title>{title}</title>
+        <meta name="description" content={metadata.description} />
       </Head>
 
       <Markdown>{content}</Markdown>
