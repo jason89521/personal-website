@@ -1,13 +1,21 @@
-import type { NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
-import Image from 'next/image';
 
 import SvgSprite from 'components/SvgSprite';
 
-const skills = ['html', 'css', 'sass', 'tailwindcss', 'js', 'ts', 'react', 'redux', 'nextjs', 'git'];
+type Props = {
+  skills: string[];
+};
 
-const Home: NextPage = () => {
+export const getStaticProps: GetStaticProps<Props> = () => {
+  const skills = ['html', 'css', 'sass', 'tailwindcss', 'js', 'ts', 'react', 'redux', 'nextjs', 'git'];
+
+  return {
+    props: { skills },
+  };
+};
+
+const Home: NextPage<Props> = ({ skills }) => {
   return (
     <main>
       <Head>
