@@ -20,7 +20,7 @@ const Layout = ({ children }: Props) => {
 
   return (
     <div className="min-h-screen dark:bg-gray-700 dark:text-gray-200">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-7xl 2xl:max-w-none 2xl:px-10 xl:px-5">
         <nav className="flex items-center gap-8 border-b py-4 capitalize">
           <Link href="/">
             <a className="text-3xl">xuan</a>

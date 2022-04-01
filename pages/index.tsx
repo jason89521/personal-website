@@ -17,11 +17,11 @@ const Home: NextPage = () => {
       </Head>
 
       <header className="py-32">
-        <h1 className="text-center font-serif text-8xl capitalize">A front-end developer</h1>
+        <h1 className="text-center font-serif text-8xl capitalize 2xl:text-6xl xl:text-4xl">A front-end developer</h1>
       </header>
 
       <section className="py-4">
-        <h2 className="mb-10 text-3xl font-semibold">Skills</h2>
+        <h2 className="mb-10 text-3xl font-semibold xl:text-xl">Skills</h2>
         <div className="flex flex-wrap justify-center gap-10">
           {skills.map(skill => {
             return (

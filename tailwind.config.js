@@ -4,6 +4,10 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {},
+    screens: {
+      '2xl': { max: '1400px' },
+      xl: { max: '1000px' },
+    },
   },
   plugins: [require('@tailwindcss/typography')],
 };
