@@ -7,16 +7,24 @@ type Props = {
 };
 
 const Layout = ({ children }: Props) => {
-  const [isLightMode, setIsLightMode] = useState(true);
+  const [themeToggle, setThemeToggle] = useState(true);
+
+  // intialize theme
+  useEffect(() => {
+    const themePreference = localStorage.getItem('theme');
+    if (themePreference === 'dark') setThemeToggle(false);
+  }, []);
 
   useEffect(() => {
-    if (isLightMode) {
+    if (themeToggle) {
       document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
       return;
     }
 
     document.documentElement.classList.add('dark');
-  }, [isLightMode]);
+    localStorage.setItem('theme', 'dark');
+  }, [themeToggle]);
 
   return (
     <div className="min-h-screen dark:bg-gray-700 dark:text-gray-200">
@@ -37,14 +45,14 @@ const Layout = ({ children }: Props) => {
           <label className="ml-auto cursor-pointer">
             <SvgSprite
               category="theme"
-              symbolId={isLightMode ? 'sun' : 'moon'}
+              symbolId={themeToggle ? 'sun' : 'moon'}
               className="h-8 w-8 fill-slate-500 transition-transform hover:scale-125 dark:fill-slate-50"
             />
             <input
               type="checkbox"
               className="hidden"
-              onChange={() => setIsLightMode(!isLightMode)}
-              checked={isLightMode}
+              onChange={() => setThemeToggle(!themeToggle)}
+              checked={themeToggle}
               value="theme"
             />
           </label>
