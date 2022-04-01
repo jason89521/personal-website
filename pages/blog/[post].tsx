@@ -1,9 +1,13 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 import { getPostPaths, getPostData } from 'lib/post';
-import Head from 'next/head';
+import Markdown from 'components/Markdown';
 
 type Props = {
   metadata: PostMetadata;
@@ -43,9 +47,7 @@ const Post: NextPage<Props> = ({ metadata, content }) => {
         <title>{title}</title>
       </Head>
 
-      <ReactMarkdown rehypePlugins={[rehypeRaw]} linkTarget="_blank">
-        {content}
-      </ReactMarkdown>
+      <Markdown>{content}</Markdown>
     </div>
   );
 };
