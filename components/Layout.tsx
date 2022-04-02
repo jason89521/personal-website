@@ -31,15 +31,15 @@ const Layout = ({ children }: Props) => {
       <div className="mx-auto max-w-7xl 2xl:max-w-none 2xl:px-10 xl:px-5">
         <nav className="flex items-center gap-8 border-b py-4 capitalize xl:gap-4">
           <Link href="/">
-            <a className="text-3xl">xuan</a>
+            <a className="text-3xl xl:text-2xl">xuan</a>
           </Link>
 
           <Link href="/blog">
-            <a className="text-lg transition-transform hover:-translate-y-1">blog</a>
+            <a className="text-lg transition-transform hover:-translate-y-1 xl:text-base">blog</a>
           </Link>
 
           <Link href="/portfolio">
-            <a className="text-lg transition-transform hover:-translate-y-1">portfolio</a>
+            <a className="text-lg transition-transform hover:-translate-y-1 xl:text-base">portfolio</a>
           </Link>
 
           <a

@@ -29,8 +29,9 @@ const Blog: NextPage<Props> = ({ previews }: Props) => {
       {previews.map(preview => {
         const { excerpt, id } = preview;
         return (
-          <li key={id} className="prose mx-auto border-b py-10 dark:prose-invert">
+          <li key={id} className="mx-auto mb-10 max-w-xl xl:mb-5">
             <Markdown
+              className="prose max-w-none py-10 dark:prose-invert xl:py-5"
               components={{
                 h1: ({ node, children, ...rest }) => {
                   return (
@@ -46,7 +47,11 @@ const Blog: NextPage<Props> = ({ previews }: Props) => {
               {excerpt}
             </Markdown>
 
-            <Link href={`/blog/${id}`}>Read More</Link>
+            <Link href={`/blog/${id}`} passHref>
+              <a className="text-xl font-semibold underline transition-all hover:tracking-widest xl:text-lg">
+                Read More
+              </a>
+            </Link>
           </li>
         );
       })}
