@@ -29,7 +29,7 @@ const Layout = ({ children }: Props) => {
   return (
     <div className="min-h-screen dark:bg-gray-700 dark:text-gray-200">
       <div className="mx-auto max-w-7xl 2xl:max-w-none 2xl:px-10 xl:px-5">
-        <nav className="flex items-center gap-8 border-b py-4 capitalize">
+        <nav className="flex items-center gap-8 border-b py-4 capitalize xl:gap-4">
           <Link href="/">
             <a className="text-3xl">xuan</a>
           </Link>
@@ -48,14 +48,14 @@ const Layout = ({ children }: Props) => {
             rel="noreferrer"
             className="ml-auto transition-transform hover:scale-125"
           >
-            <SvgSprite category="social" symbolId="github" className="h-8 w-8 dark:fill-slate-50" />
+            <SvgSprite category="social" symbolId="github" className="h-8 w-8 dark:fill-slate-50 xl:h-6 xl:w-6" />
           </a>
 
           <label className="cursor-pointer transition-transform hover:scale-125">
             <SvgSprite
               category="theme"
               symbolId={themeToggle ? 'sun' : 'moon'}
-              className="h-8 w-8 fill-slate-500 dark:fill-slate-50"
+              className="h-8 w-8 fill-slate-500 dark:fill-slate-50 xl:h-6 xl:w-6"
             />
             <input
               type="checkbox"

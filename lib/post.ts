@@ -35,7 +35,7 @@ const getPostData = (post: string): { metadata: PostMetadata; excerpt: string; c
  * Get all posts' metadata and excerpt. Use post's filename (eliminate .md) to be an id.
  */
 const getPostPreviews = () => {
-  const files = fs.readdirSync(postsPath);
+  const files = fs.readdirSync(postsPath).reverse();
   const previews = files.map(file => {
     const post = file.slice(0, -3);
     const { metadata, excerpt } = getPostData(post);

@@ -1,10 +1,5 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import rehypeRaw from 'rehype-raw';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 import { getPostPaths, getPostData } from 'lib/post';
 import Markdown from 'components/Markdown';
@@ -42,7 +37,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 const Post: NextPage<Props> = ({ metadata, content }) => {
   const { title, description } = metadata;
   return (
-    <div className="prose mx-auto py-10 dark:prose-invert">
+    <div className="prose mx-auto pt-10 pb-20 dark:prose-invert">
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />

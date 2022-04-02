@@ -34,9 +34,9 @@ const Blog: NextPage<Props> = ({ previews }: Props) => {
               components={{
                 h1: ({ node, children, ...rest }) => {
                   return (
-                    <h1 className="not-prose inline-block hover:underline" {...rest}>
+                    <h1 {...rest}>
                       <Link href={`/blog/${id}`} passHref>
-                        <a>{children}</a>
+                        <a className="font-extrabold no-underline hover:underline">{children}</a>
                       </Link>
                     </h1>
                   );
