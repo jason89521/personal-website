@@ -22,7 +22,7 @@ export const getStaticPaths: GetStaticPaths<Query> = async () => {
   const paths = getPostPaths();
   return {
     paths,
-    fallback: 'blocking',
+    fallback: false,
   };
 };
 
@@ -40,12 +40,12 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 };
 
 const Post: NextPage<Props> = ({ metadata, content }) => {
-  const { title } = metadata;
+  const { title, description } = metadata;
   return (
     <div className="prose mx-auto py-10 dark:prose-invert">
       <Head>
         <title>{title}</title>
-        <meta name="description" content={metadata.description} />
+        <meta name="description" content={description} />
       </Head>
 
       <Markdown>{content}</Markdown>

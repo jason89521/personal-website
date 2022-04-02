@@ -42,11 +42,20 @@ const Layout = ({ children }: Props) => {
             <a className="text-lg transition-transform hover:-translate-y-1">portfolio</a>
           </Link>
 
-          <label className="ml-auto cursor-pointer">
+          <a
+            href="https://github.com/jason89521"
+            target="_blank"
+            rel="noreferrer"
+            className="ml-auto transition-transform hover:scale-125"
+          >
+            <SvgSprite category="social" symbolId="github" className="h-8 w-8 dark:fill-slate-50" />
+          </a>
+
+          <label className="cursor-pointer transition-transform hover:scale-125">
             <SvgSprite
               category="theme"
               symbolId={themeToggle ? 'sun' : 'moon'}
-              className="h-8 w-8 fill-slate-500 transition-transform hover:scale-125 dark:fill-slate-50"
+              className="h-8 w-8 fill-slate-500 dark:fill-slate-50"
             />
             <input
               type="checkbox"

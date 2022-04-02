@@ -1,7 +1,7 @@
 import React from 'react';
 
 type Props = {
-  category: 'skill' | 'theme';
+  category: 'skill' | 'theme' | 'social';
   symbolId: string;
 } & React.ComponentPropsWithoutRef<'svg'>;
 

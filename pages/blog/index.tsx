@@ -34,19 +34,19 @@ const Blog: NextPage<Props> = ({ previews }: Props) => {
               components={{
                 h1: ({ node, children, ...rest }) => {
                   return (
-                    <Link href={`/blog/${id}`} passHref>
-                      <a>
-                        <h1 className="inline-block underline" {...rest}>
-                          {children}
-                        </h1>
-                      </a>
-                    </Link>
+                    <h1 className="not-prose inline-block hover:underline" {...rest}>
+                      <Link href={`/blog/${id}`} passHref>
+                        <a>{children}</a>
+                      </Link>
+                    </h1>
                   );
                 },
               }}
             >
               {excerpt}
             </Markdown>
+
+            <Link href={`/blog/${id}`}>Read More</Link>
           </li>
         );
       })}
