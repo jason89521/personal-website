@@ -46,12 +46,12 @@ const Layout = ({ children }: Props) => {
             href="https://github.com/jason89521"
             target="_blank"
             rel="noreferrer"
-            className="ml-auto transition-transform hover:scale-125"
+            className="ml-auto transition-transform hover:-rotate-12 hover:scale-125"
           >
             <SvgSprite category="social" symbolId="github" className="h-8 w-8 dark:fill-slate-50 xl:h-6 xl:w-6" />
           </a>
 
-          <label className="cursor-pointer transition-transform hover:scale-125">
+          <label className="cursor-pointer transition-transform hover:-rotate-12 hover:scale-125">
             <SvgSprite
               category="theme"
               symbolId={themeToggle ? 'sun' : 'moon'}

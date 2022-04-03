@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 const Post: NextPage<Props> = ({ metadata, content }) => {
   const { title, description } = metadata;
   return (
-    <div className="prose mx-auto pt-10 pb-20 dark:prose-invert">
+    <div className="prose mx-auto max-w-xl pt-10 pb-20 dark:prose-invert">
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />

@@ -29,7 +29,7 @@ const Blog: NextPage<Props> = ({ previews }: Props) => {
       {previews.map(preview => {
         const { excerpt, id } = preview;
         return (
-          <li key={id} className="mx-auto mb-10 max-w-xl xl:mb-5">
+          <li key={id} className="mx-auto mb-10 max-w-xl">
             <Markdown
               className="prose max-w-none py-10 dark:prose-invert xl:py-5"
               components={{
