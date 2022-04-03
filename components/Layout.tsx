@@ -38,9 +38,9 @@ const Layout = ({ children }: Props) => {
             <a className="text-lg transition-transform hover:-translate-y-1 xl:text-base">blog</a>
           </Link>
 
-          <Link href="/portfolio">
+          {/* <Link href="/portfolio">
             <a className="text-lg transition-transform hover:-translate-y-1 xl:text-base">portfolio</a>
-          </Link>
+          </Link> */}
 
           <a
             href="https://github.com/jason89521"
