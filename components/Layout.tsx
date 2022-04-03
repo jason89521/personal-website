@@ -55,7 +55,7 @@ const Layout = ({ children }: Props) => {
             <SvgSprite
               category="theme"
               symbolId={themeToggle ? 'sun' : 'moon'}
-              className="h-8 w-8 fill-slate-500 dark:fill-slate-50 xl:h-6 xl:w-6"
+              className="h-8 w-8 dark:fill-slate-50 xl:h-6 xl:w-6"
             />
             <input
               type="checkbox"
