@@ -25,8 +25,7 @@ const getPostPaths = () => {
  * Get the data of `{post}.md`
  */
 const getPostData = (post: string): { metadata: PostMetadata; excerpt: string; content: string } => {
-  const filename = `${post}.md`;
-  const filePath = path.join(postsPath, filename);
+  const filePath = path.join(postsPath, `${post}.md`);
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, excerpt, content } = matter(fileContent, { excerpt_separator: '<!-- more -->' });
   return { metadata: data as PostMetadata, excerpt: excerpt as string, content };

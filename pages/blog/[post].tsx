@@ -1,6 +1,5 @@
-import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import fs from 'fs';
 
 import { getPostPaths, getPostData } from 'lib/post';
 import Markdown from 'components/Markdown';
@@ -37,7 +36,7 @@ export const getStaticPaths: GetStaticPaths<Query> = async () => {
 };
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
-  if (!params || !fs.existsSync(`${params.post}.md`)) return { notFound: true };
+  if (!params) return { notFound: true };
 
   const post = params.post;
   const { metadata, content } = getPostData(post);
