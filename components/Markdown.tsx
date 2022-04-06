@@ -13,7 +13,7 @@ type Components = Partial<Omit<NormalComponents, keyof SpecialComponents> & Spec
 
 type Props = Omit<ReactMarkdownOptions, 'rehypePlugins' | 'remarkPlugins'>;
 
-const Markdown = ({ children, components, ...rest }: Props) => {
+function Markdown({ children, components, ...rest }: Props) {
   const codeComponent: Components = {
     code({ node, inline, className, children, ...props }) {
       const match = /language-(\w+)/.exec(className || '');
@@ -44,6 +44,6 @@ const Markdown = ({ children, components, ...rest }: Props) => {
       {children}
     </ReactMarkdown>
   );
-};
+}
 
 export default Markdown;

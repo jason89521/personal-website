@@ -6,7 +6,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Layout = ({ children }: Props) => {
+function Layout({ children }: Props) {
   const [themeToggle, setThemeToggle] = useState(true);
 
   // intialize theme
@@ -71,6 +71,6 @@ const Layout = ({ children }: Props) => {
       </div>
     </div>
   );
-};
+}
 
 export default Layout;

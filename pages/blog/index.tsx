@@ -1,6 +1,5 @@
-import type { GetStaticProps, NextPage } from 'next';
+import type { GetStaticProps } from 'next';
 import Link from 'next/link';
-import ReactMarkdown from 'react-markdown';
 
 import { getPostPreviews } from 'lib/post';
 import Markdown from 'components/Markdown';
@@ -10,16 +9,7 @@ type Props = {
   previews: ReturnType<typeof getPostPreviews>;
 };
 
-export const getStaticProps: GetStaticProps<Props> = () => {
-  const postPreviews = getPostPreviews();
-  return {
-    props: {
-      previews: postPreviews,
-    },
-  };
-};
-
-const Blog: NextPage<Props> = ({ previews }: Props) => {
+export default function Blog({ previews }: Props) {
   return (
     <ul className="pb-10">
       <Head>
@@ -57,6 +47,13 @@ const Blog: NextPage<Props> = ({ previews }: Props) => {
       })}
     </ul>
   );
-};
+}
 
-export default Blog;
+export const getStaticProps: GetStaticProps<Props> = () => {
+  const postPreviews = getPostPreviews();
+  return {
+    props: {
+      previews: postPreviews,
+    },
+  };
+};

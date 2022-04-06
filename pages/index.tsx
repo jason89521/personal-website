@@ -1,4 +1,4 @@
-import type { GetStaticProps, NextPage } from 'next';
+import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import SvgSprite from 'components/SvgSprite';
@@ -15,7 +15,7 @@ export const getStaticProps: GetStaticProps<Props> = () => {
   };
 };
 
-const Home: NextPage<Props> = ({ skills }) => {
+export default function Home({ skills }: Props)  {
   return (
     <main>
       <Head>
@@ -49,4 +49,3 @@ const Home: NextPage<Props> = ({ skills }) => {
   );
 };
 
-export default Home;
