@@ -2,20 +2,24 @@ import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import SvgSprite from 'components/SvgSprite';
+import { firestore } from 'firebase/server';
 
 type Props = {
   skills: string[];
 };
 
-export const getStaticProps: GetStaticProps<Props> = () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const skills = ['html', 'css', 'sass', 'tailwindcss', 'js', 'ts', 'react', 'redux', 'nextjs', 'git'];
+  const snapshot = await firestore.doc('foo/bar').get();
+  console.log(snapshot.data());
+  console.log(snapshot.get('baz'));
 
   return {
     props: { skills },
   };
 };
 
-export default function Home({ skills }: Props)  {
+export default function Home({ skills }: Props) {
   return (
     <main>
       <Head>
@@ -47,5 +51,4 @@ export default function Home({ skills }: Props)  {
       </section>
     </main>
   );
-};
-
+}
