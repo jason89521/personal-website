@@ -6,20 +6,20 @@ import { firestore } from 'firebase/server';
 
 type Props = {
   skills: string[];
+  baz: string;
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const skills = ['html', 'css', 'sass', 'tailwindcss', 'js', 'ts', 'react', 'redux', 'nextjs', 'git'];
   const snapshot = await firestore.doc('foo/bar').get();
-  console.log(snapshot.data());
-  console.log(snapshot.get('baz'));
+  const baz: string = snapshot.get('baz');
 
   return {
-    props: { skills },
+    props: { skills, baz },
   };
 };
 
-export default function Home({ skills }: Props) {
+export default function Home({ skills, baz }: Props) {
   return (
     <main>
       <Head>
@@ -30,6 +30,7 @@ export default function Home({ skills }: Props) {
 
       <header className="py-32">
         <h1 className="text-center font-serif text-8xl capitalize 2xl:text-6xl xl:text-4xl">A front-end developer</h1>
+        {baz}
       </header>
 
       <section className="py-4">
