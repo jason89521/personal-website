@@ -19,17 +19,15 @@ type Query = {
 export default function Post({ metadata, content }: Props) {
   const { title, description } = metadata;
   return (
-    <div className="prose mx-auto max-w-xl pt-10 pb-20 dark:prose-invert">
+    <article className="prose mx-auto max-w-xl pt-10 pb-20 dark:prose-invert">
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
 
-      <article>
-        <PostHeader title={title} />
-        <Markdown>{content}</Markdown>
-      </article>
-    </div>
+      <PostHeader title={title} />
+      <Markdown>{content}</Markdown>
+    </article>
   );
 }
 
