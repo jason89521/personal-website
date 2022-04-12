@@ -5,20 +5,13 @@ import matter from 'gray-matter';
 const postsPath = path.resolve('posts');
 
 /**
- * Return query parameters, should be used with `getStaticPaths`
+ * Return all posts filename without extension
  */
-function getPostPaths() {
-  const posts = fs.readdirSync(postsPath);
-  const paths = posts.map(post => {
-    return {
-      params: {
-        post: post.slice(0, -3), // remove '.md' in the end
-      },
-    };
-  });
-
-  return paths;
-}
+const getAllPosts = () => {
+  const files = fs.readdirSync(postsPath);
+  const posts = files.map(file => file.slice(0, -3));
+  return posts;
+};
 
 /**
  * Get the data of `{post}.md`
@@ -30,19 +23,4 @@ function getPostData(post: string) {
   return { metadata: data as PostMetadata, excerpt: excerpt!, content };
 }
 
-/**
- * Get all posts' metadata and excerpt. Use post's filename (eliminate '.md') to be an id.
- */
-function getPostPreviews() {
-  // list the newest on the top
-  const files = fs.readdirSync(postsPath).reverse();
-  const previews = files.map(file => {
-    const post = file.slice(0, -3);
-    const { metadata, excerpt } = getPostData(post);
-    return { metadata, excerpt, id: post };
-  });
-
-  return previews;
-}
-
-export { getPostPaths, getPostData, getPostPreviews };
+export { getAllPosts, getPostData };

@@ -3,7 +3,7 @@ import Head from 'next/head';
 import fs from 'fs';
 import path from 'path';
 
-import { getPostPaths, getPostData } from 'lib/post';
+import { getPostPaths, getPostData, getAllPosts } from 'lib/post';
 import Markdown from 'components/Markdown';
 import PostHeader from 'components/PostHeader';
 
@@ -32,7 +32,8 @@ export default function Post({ metadata, content }: Props) {
 }
 
 export const getStaticPaths: GetStaticPaths<Query> = async () => {
-  const paths = getPostPaths();
+  const posts = getAllPosts();
+  const paths = posts.map(post => ({ params: { post } }));
   return {
     paths,
     fallback: false,

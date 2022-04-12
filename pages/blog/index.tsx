@@ -2,7 +2,7 @@ import type { GetStaticProps } from 'next';
 import Link from 'next/link';
 import Head from 'next/head';
 
-import { getPostPreviews } from 'lib/post';
+import { getAllPosts, getPostData } from 'lib/post';
 import Markdown from 'components/Markdown';
 import PostHeader from 'components/PostHeader';
 import { firestore } from 'firebase/server';
@@ -40,22 +40,25 @@ const Blog = ({ previews }: Props) => {
 export default Blog;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const postPreviews = getPostPreviews();
   const collectionRef = firestore.collection('posts');
-  const withViews = await Promise.all(
-    postPreviews.map(async preview => {
-      const doc = await collectionRef.doc(preview.id).get();
+  const posts = getAllPosts().reverse();
+  const data = posts.map(post => getPostData(post));
+  const previews = await Promise.all(
+    data.map(async (postData, index) => {
+      const id = posts[index];
+      const doc = await collectionRef.doc(id).get();
       const views = doc.exists ? doc.get('views') : 0;
       return {
-        ...preview,
+        ...postData,
         views,
+        id,
       };
     })
   );
 
   return {
     props: {
-      previews: withViews,
+      previews,
     },
   };
 };
