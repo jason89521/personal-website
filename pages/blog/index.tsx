@@ -20,7 +20,7 @@ const Blog = ({ previews }: Props) => {
       {previews.map(preview => {
         const { metadata, excerpt } = preview;
         return (
-          <div key={metadata.id} className="mx-auto max-w-xl py-10 xl:py-5">
+          <div key={metadata.id} className="mx-auto mb-5 max-w-xl py-10 last:mb-0 xl:py-5">
             <article className="prose mb-5 max-w-none dark:prose-invert">
               <PostHeader id={metadata.id} title={metadata.title} />
               <Markdown>{excerpt}</Markdown>
