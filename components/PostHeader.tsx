@@ -3,13 +3,16 @@ import Image from 'next/image';
 
 import avatar from 'public/avatar.jpg';
 import SvgSprite from './SvgSprite';
+import usePostViews from 'hooks/usePostViews';
 
 type Props = {
+  id: string;
   title: string;
-  views: number;
 };
 
-const PostHeader = ({ title, views }: Props) => {
+const PostHeader = ({ id, title }: Props) => {
+  const views = usePostViews(id);
+
   return (
     <header>
       <h1>{title}</h1>

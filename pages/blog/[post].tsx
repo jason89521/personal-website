@@ -17,7 +17,6 @@ type Query = {
 
 export default function Post({ metadata, content }: Props) {
   const { title, description, id } = metadata;
-  const views = usePostViews(id);
 
   return (
     <article className="prose mx-auto max-w-xl pt-10 pb-20 dark:prose-invert">
@@ -26,7 +25,7 @@ export default function Post({ metadata, content }: Props) {
         <meta name="description" content={description} />
       </Head>
 
-      <PostHeader title={title} views={views} />
+      <PostHeader id={id} title={title} />
       <Markdown>{content}</Markdown>
     </article>
   );

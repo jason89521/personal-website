@@ -5,7 +5,6 @@ import Head from 'next/head';
 import { getAllPosts, getPostData } from 'lib/post';
 import Markdown from 'components/Markdown';
 import PostHeader from 'components/PostHeader';
-import { firestore } from 'firebase/server';
 
 type Props = {
   previews: PostPreview[];
@@ -19,11 +18,11 @@ const Blog = ({ previews }: Props) => {
       </Head>
 
       {previews.map(preview => {
-        const { metadata, excerpt, views } = preview;
+        const { metadata, excerpt } = preview;
         return (
           <div key={metadata.id} className="mx-auto max-w-xl py-10 xl:py-5">
             <article className="prose mb-5 max-w-none dark:prose-invert">
-              <PostHeader title={metadata.title} views={views} />
+              <PostHeader id={metadata.id} title={metadata.title} />
               <Markdown>{excerpt}</Markdown>
             </article>
 
@@ -40,18 +39,14 @@ const Blog = ({ previews }: Props) => {
 export default Blog;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const collectionRef = firestore.collection('posts');
   const posts = getAllPosts().reverse();
   const data = posts.map(post => getPostData(post));
   const previews = await Promise.all(
     data.map(async postData => {
       const { metadata, excerpt } = postData;
-      const doc = await collectionRef.doc(metadata.id).get();
-      const views = doc.exists ? doc.get('views') : 0;
       return {
         metadata,
         excerpt,
-        views,
       };
     })
   );
@@ -60,6 +55,5 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     props: {
       previews,
     },
-    revalidate: 60,
   };
 };

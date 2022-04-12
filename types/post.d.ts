@@ -7,5 +7,4 @@ type PostMetadata = {
 type PostPreview = {
   metadata: PostMetadata;
   excerpt: string;
-  views: number;
 };
