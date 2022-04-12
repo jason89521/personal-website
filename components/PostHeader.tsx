@@ -6,9 +6,10 @@ import SvgSprite from './SvgSprite';
 
 type Props = {
   title: string;
+  views: number;
 };
 
-const PostHeader = ({ title }: Props) => {
+const PostHeader = ({ title, views }: Props) => {
   return (
     <header>
       <h1>{title}</h1>
@@ -19,7 +20,7 @@ const PostHeader = ({ title }: Props) => {
         </span>
         <span className="flex items-center gap-2">
           <SvgSprite category="icon" symbolId="eye" className="h-4 w-4 dark:fill-slate-300" />
-          1234
+          {views}
         </span>
       </div>
     </header>

@@ -5,9 +5,10 @@ import Head from 'next/head';
 import { getPostPreviews } from 'lib/post';
 import Markdown from 'components/Markdown';
 import PostHeader from 'components/PostHeader';
+import { firestore } from 'firebase/server';
 
 type Props = {
-  previews: ReturnType<typeof getPostPreviews>;
+  previews: PostPreview[];
 };
 
 const Blog = ({ previews }: Props) => {
@@ -18,11 +19,11 @@ const Blog = ({ previews }: Props) => {
       </Head>
 
       {previews.map(preview => {
-        const { metadata, excerpt, id } = preview;
+        const { metadata, excerpt, id, views } = preview;
         return (
           <div key={id} className="mx-auto max-w-xl py-10 xl:py-5">
             <article className="prose mb-5 max-w-none dark:prose-invert">
-              <PostHeader title={metadata.title}></PostHeader>
+              <PostHeader title={metadata.title} views={views} />
               <Markdown>{excerpt}</Markdown>
             </article>
 
@@ -38,11 +39,23 @@ const Blog = ({ previews }: Props) => {
 
 export default Blog;
 
-export const getStaticProps: GetStaticProps<Props> = () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const postPreviews = getPostPreviews();
+  const collectionRef = firestore.collection('posts');
+  const withViews = await Promise.all(
+    postPreviews.map(async preview => {
+      const doc = await collectionRef.doc(preview.id).get();
+      const views = doc.exists ? doc.get('views') : 0;
+      return {
+        ...preview,
+        views,
+      };
+    })
+  );
+
   return {
     props: {
-      previews: postPreviews,
+      previews: withViews,
     },
   };
 };
