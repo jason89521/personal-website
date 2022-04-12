@@ -60,7 +60,9 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   const post = params.post;
   const { metadata, content } = getPostData(post);
-  const doc = await firestore.collection('posts').doc(post).get();
+  const docRef = firestore.collection('posts').doc(post);
+  const doc = await docRef.get();
+  if (!doc.exists) docRef.create({ views: 0 });
   const views = doc.exists ? doc.get('views') : 0;
   return {
     props: {
