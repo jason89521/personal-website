@@ -1,4 +1,5 @@
 type PostMetadata = {
+  id: string;
   title: string;
   description: string;
 };
@@ -6,6 +7,5 @@ type PostMetadata = {
 type PostPreview = {
   metadata: PostMetadata;
   excerpt: string;
-  id: string;
   views: number;
 };

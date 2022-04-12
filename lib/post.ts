@@ -20,7 +20,8 @@ function getPostData(post: string) {
   const filePath = path.join(postsPath, `${post}.md`);
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, excerpt, content } = matter(fileContent, { excerpt_separator: '<!-- more -->' });
-  return { metadata: data as PostMetadata, excerpt: excerpt!, content };
+  const metadata = { ...data, id: post } as PostMetadata;
+  return { metadata, excerpt: excerpt!, content };
 }
 
 export { getAllPosts, getPostData };

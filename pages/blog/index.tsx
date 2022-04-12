@@ -19,15 +19,15 @@ const Blog = ({ previews }: Props) => {
       </Head>
 
       {previews.map(preview => {
-        const { metadata, excerpt, id, views } = preview;
+        const { metadata, excerpt, views } = preview;
         return (
-          <div key={id} className="mx-auto max-w-xl py-10 xl:py-5">
+          <div key={metadata.id} className="mx-auto max-w-xl py-10 xl:py-5">
             <article className="prose mb-5 max-w-none dark:prose-invert">
               <PostHeader title={metadata.title} views={views} />
               <Markdown>{excerpt}</Markdown>
             </article>
 
-            <Link href={`/blog/${id}`} passHref>
+            <Link href={`/blog/${metadata.id}`} passHref>
               <a className="font-semibold underline transition-all hover:tracking-widest">Read More</a>
             </Link>
           </div>
@@ -44,14 +44,14 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const posts = getAllPosts().reverse();
   const data = posts.map(post => getPostData(post));
   const previews = await Promise.all(
-    data.map(async (postData, index) => {
-      const id = posts[index];
-      const doc = await collectionRef.doc(id).get();
+    data.map(async postData => {
+      const { metadata, excerpt } = postData;
+      const doc = await collectionRef.doc(metadata.id).get();
       const views = doc.exists ? doc.get('views') : 0;
       return {
-        ...postData,
+        metadata,
+        excerpt,
         views,
-        id,
       };
     })
   );
