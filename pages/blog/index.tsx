@@ -4,12 +4,13 @@ import Head from 'next/head';
 
 import { getPostPreviews } from 'lib/post';
 import Markdown from 'components/Markdown';
+import PostHeader from 'components/PostHeader';
 
 type Props = {
   previews: ReturnType<typeof getPostPreviews>;
 };
 
-export default function Blog({ previews }: Props) {
+const Blog = ({ previews }: Props) => {
   return (
     <ul className="pb-10">
       <Head>
@@ -17,22 +18,25 @@ export default function Blog({ previews }: Props) {
       </Head>
 
       {previews.map(preview => {
-        const { excerpt, id } = preview;
+        const { metadata, excerpt, id } = preview;
         return (
-          <li key={id} className="mx-auto mb-10 max-w-xl">
-            <Markdown className="prose max-w-none py-10 dark:prose-invert xl:py-5">{excerpt}</Markdown>
+          <li key={id} className="mx-auto flex max-w-xl flex-col gap-10 py-10 xl:gap-5 xl:py-5">
+            <article className="prose max-w-none dark:prose-invert">
+              <PostHeader title={metadata.title}></PostHeader>
+              <Markdown>{excerpt}</Markdown>
+            </article>
 
             <Link href={`/blog/${id}`} passHref>
-              <a className="text-xl font-semibold underline transition-all hover:tracking-widest xl:text-lg">
-                Read More
-              </a>
+              <a className="font-semibold underline transition-all hover:tracking-widest">Read More</a>
             </Link>
           </li>
         );
       })}
     </ul>
   );
-}
+};
+
+export default Blog;
 
 export const getStaticProps: GetStaticProps<Props> = () => {
   const postPreviews = getPostPreviews();

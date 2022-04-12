@@ -5,6 +5,7 @@ import path from 'path';
 
 import { getPostPaths, getPostData } from 'lib/post';
 import Markdown from 'components/Markdown';
+import PostHeader from 'components/PostHeader';
 
 type Props = {
   metadata: PostMetadata;
@@ -24,7 +25,10 @@ export default function Post({ metadata, content }: Props) {
         <meta name="description" content={description} />
       </Head>
 
-      <Markdown>{content}</Markdown>
+      <article>
+        <PostHeader title={title} />
+        <Markdown>{content}</Markdown>
+      </article>
     </div>
   );
 }
@@ -39,7 +43,7 @@ export const getStaticPaths: GetStaticPaths<Query> = async () => {
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   if (!params) return { notFound: true };
-  
+
   const filename = `${params.post}.md`;
   const filePath = path.resolve('posts', filename);
   if (!fs.existsSync(filePath)) return { notFound: true };
