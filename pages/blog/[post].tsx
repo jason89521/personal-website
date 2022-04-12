@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import type { GetStaticPaths, GetStaticProps } from 'next';
+import { useEffect } from 'react';
 import Head from 'next/head';
 import fs from 'fs';
 import path from 'path';
@@ -24,7 +24,7 @@ export default function Post({ metadata, content, views }: Props) {
 
   useEffect(() => {
     const fetcher = async () => {
-      const data = await (await fetch(`/api/post/${id}`)).json();
+      const data = await (await fetch(`/api/post/${id}`, { method: 'POST' })).json();
     };
     fetcher();
   }, [id]);
