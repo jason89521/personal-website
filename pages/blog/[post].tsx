@@ -70,5 +70,6 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
       content,
       views,
     },
+    revalidate: 60,
   };
 };
