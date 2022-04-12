@@ -25,7 +25,7 @@ export default function Post({ metadata, content }: Props) {
         <meta name="description" content={description} />
       </Head>
 
-      <PostHeader id={id} title={title} />
+      <PostHeader id={id} title={title} shouldUpdateViews />
       <Markdown>{content}</Markdown>
     </article>
   );

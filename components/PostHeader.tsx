@@ -8,10 +8,11 @@ import usePostViews from 'hooks/usePostViews';
 type Props = {
   id: string;
   title: string;
+  shouldUpdateViews?: boolean;
 };
 
-const PostHeader = ({ id, title }: Props) => {
-  const views = usePostViews(id);
+const PostHeader = ({ id, title, shouldUpdateViews }: Props) => {
+  const views = usePostViews(id, shouldUpdateViews);
 
   return (
     <header>
