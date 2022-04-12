@@ -7,7 +7,7 @@ type Props = {
   skills: string[];
 };
 
-export const getStaticProps: GetStaticProps<Props> = () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const skills = ['html', 'css', 'sass', 'tailwindcss', 'js', 'ts', 'react', 'redux', 'nextjs', 'git'];
 
   return {
@@ -15,7 +15,7 @@ export const getStaticProps: GetStaticProps<Props> = () => {
   };
 };
 
-export default function Home({ skills }: Props)  {
+export default function Home({ skills }: Props) {
   return (
     <main>
       <Head>
@@ -47,5 +47,4 @@ export default function Home({ skills }: Props)  {
       </section>
     </main>
   );
-};
-
+}

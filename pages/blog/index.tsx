@@ -1,59 +1,65 @@
 import type { GetStaticProps } from 'next';
 import Link from 'next/link';
-
-import { getPostPreviews } from 'lib/post';
-import Markdown from 'components/Markdown';
 import Head from 'next/head';
 
+import { getAllPosts, getPostData } from 'lib/post';
+import Markdown from 'components/Markdown';
+import PostHeader from 'components/PostHeader';
+import { firestore } from 'firebase/server';
+
 type Props = {
-  previews: ReturnType<typeof getPostPreviews>;
+  previews: PostPreview[];
 };
 
-export default function Blog({ previews }: Props) {
+const Blog = ({ previews }: Props) => {
   return (
-    <ul className="pb-10">
+    <main className="pb-10">
       <Head>
         <title>Xuan&apos;s blog</title>
       </Head>
 
       {previews.map(preview => {
-        const { excerpt, id } = preview;
+        const { metadata, excerpt, views } = preview;
         return (
-          <li key={id} className="mx-auto mb-10 max-w-xl">
-            <Markdown
-              className="prose max-w-none py-10 dark:prose-invert xl:py-5"
-              components={{
-                h1: ({ node, children, ...rest }) => {
-                  return (
-                    <h1 {...rest}>
-                      <Link href={`/blog/${id}`} passHref>
-                        <a className="font-extrabold no-underline hover:underline">{children}</a>
-                      </Link>
-                    </h1>
-                  );
-                },
-              }}
-            >
-              {excerpt}
-            </Markdown>
+          <div key={metadata.id} className="mx-auto max-w-xl py-10 xl:py-5">
+            <article className="prose mb-5 max-w-none dark:prose-invert">
+              <PostHeader title={metadata.title} views={views} />
+              <Markdown>{excerpt}</Markdown>
+            </article>
 
-            <Link href={`/blog/${id}`} passHref>
-              <a className="text-xl font-semibold underline transition-all hover:tracking-widest xl:text-lg">
-                Read More
-              </a>
+            <Link href={`/blog/${metadata.id}`} passHref>
+              <a className="font-semibold underline transition-all hover:tracking-widest">Read More</a>
             </Link>
-          </li>
+          </div>
         );
       })}
-    </ul>
+    </main>
   );
-}
+};
 
-export const getStaticProps: GetStaticProps<Props> = () => {
-  const postPreviews = getPostPreviews();
+export default Blog;
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const collectionRef = firestore.collection('posts');
+  const posts = getAllPosts().reverse();
+  const data = posts.map(post => getPostData(post));
+  const previews = await Promise.all(
+    data.map(async postData => {
+      const { metadata, excerpt } = postData;
+      const doc = await collectionRef.doc(metadata.id).get();
+      const views = doc.exists ? doc.get('views') : 0;
+      return {
+        metadata,
+        excerpt,
+        views,
+      };
+    })
+  );
+
   return {
     props: {
-      previews: postPreviews,
+      previews,
     },
+    revalidate: 60,
   };
 };
