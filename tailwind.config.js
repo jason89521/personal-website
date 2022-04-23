@@ -7,8 +7,9 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
-            code: {
-              marginLeft: '0.5em',
+            pre: {
+              backgroundColor: '',
+              padding: '0',
             },
           },
         },
