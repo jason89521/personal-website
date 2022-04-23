@@ -119,4 +119,4 @@ const {
 
 一開始使用 `useReducer` 時確實會覺得有點麻煩，因為寫 reducer 時要用 switch 寫好幾個 case，除此之外還要手動新增 action creators。如果是用 javascript 寫的話還好，但是如果是用 typescript 寫的話就要定義一堆 type，不只寫起來麻煩，整份 code 的畫面看起來也很亂。不過這些問題都可以用 [quickly-use-reducer](https://www.npmjs.com/package/quickly-use-reducer) 解決，所以其實也沒有那麼麻煩。
 
-總結來說，使用 `useReducer` 還是利大於弊。除了將更新 state 的邏輯集中管理以外，使用 `dispatch` 來取代 callback 還可以避免掉 re-render，但這僅限於處理複雜的 state，如果 state 的更新邏輯很簡單的話，建議還是直接使用 `useState` 就好。
+總結來說，使用 `useReducer` 還是利大於弊。除了將更新 state 的邏輯集中管理以外，使用 `dispatch` 來取代 callback 還可以避免掉 re-render。但這僅限於處理複雜的 state，如果 state 的更新邏輯很簡單的話，建議還是直接使用 `useState` 就好。
