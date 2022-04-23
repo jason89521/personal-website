@@ -12,7 +12,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   const docRef = firestore.collection('posts').doc(id.toString());
   const doc = await docRef.get();
   if (!doc.exists) {
-    res.status(400);
+    doc.ref.create({ views: 1 });
+    res.status(200).json({ views: 1 });
     return;
   }
 
