@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 type Props = { nextLink: LinkProps } & Omit<React.ComponentPropsWithoutRef<'a'>, 'href'>;
 
-const ActiveLink = ({ nextLink, className, ...props }: Props) => {
+const NavLink = ({ nextLink, className, ...props }: Props) => {
   const { pathname } = useRouter();
   const href = typeof nextLink.href === 'string' ? nextLink.href : nextLink.href.pathname!;
   const activeClass = pathname.startsWith(href) ? 'text-primary' : '';
@@ -17,4 +17,4 @@ const ActiveLink = ({ nextLink, className, ...props }: Props) => {
   );
 };
 
-export default ActiveLink;
+export default NavLink;

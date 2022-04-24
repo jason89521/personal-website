@@ -25,7 +25,7 @@ export default function Post({ metadata, content }: Props) {
         <meta name="description" content={description} />
       </Head>
 
-      <article className="prose mx-auto max-w-xl pt-10 pb-20 dark:prose-invert">
+      <article className="prose mx-auto max-w-post pt-10 pb-20 dark:prose-invert">
         <PostHeader id={id} title={title} shouldUpdateViews />
         <Markdown>{content}</Markdown>
       </article>

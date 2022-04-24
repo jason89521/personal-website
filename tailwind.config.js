@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss/tailwind-config').TailwindConfig} */
+/** @type {import('tailwindcss/tailwind-config').TailwindConfig}  */
 module.exports = {
   content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
   darkMode: 'class',
@@ -37,6 +37,9 @@ module.exports = {
       },
       colors: {
         primary: 'var(--color-primary)',
+      },
+      maxWidth: {
+        post: '45rem',
       },
     },
     screens: {

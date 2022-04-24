@@ -20,14 +20,14 @@ const Blog = ({ previews }: Props) => {
       {previews.map(preview => {
         const { metadata, excerpt } = preview;
         return (
-          <div key={metadata.id} className="mx-auto mb-5 max-w-xl py-10 last:mb-0 xl:py-5">
-            <article className="prose mb-5 max-w-none dark:prose-invert">
+          <div key={metadata.id} className="mx-auto mb-5 max-w-post py-10 last:mb-0 xl:py-5">
+            <article className="prose mb-8 max-w-none dark:prose-invert">
               <PostHeader id={metadata.id} title={metadata.title} isHeadingLink />
               <Markdown>{excerpt}</Markdown>
             </article>
 
             <Link href={`/blog/${metadata.id}`} passHref>
-              <a className="font-semibold text-primary underline transition-all hover:tracking-widest">Read More</a>
+              <a className="text-lg font-bold text-primary transition-all hover:underline">Read More</a>
             </Link>
           </div>
         );

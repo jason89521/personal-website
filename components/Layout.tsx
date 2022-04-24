@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import SvgSprite from 'components/SvgSprite';
-import ActiveLink from 'components/ActiveLink';
+import NavLink from 'components/NavLink';
 
 type Props = {
   children: React.ReactNode;
@@ -33,12 +33,12 @@ function Layout({ children }: Props) {
     <div className="min-h-screen dark:bg-black dark:text-gray-100">
       <nav className="flex items-center gap-8 px-10 py-4 text-xl font-medium capitalize shadow dark:shadow-white xl:gap-4 xl:px-5">
         <Link href="/">
-          <a className="">xuan</a>
+          <a className="font-semibold">xuan</a>
         </Link>
 
-        <ActiveLink nextLink={{ href: '/blog' }} className="transition-transform hover:-translate-y-1">
+        <NavLink nextLink={{ href: '/blog' }} className="transition-transform hover:-translate-y-1">
           blog
-        </ActiveLink>
+        </NavLink>
 
         {/* <Link href="/portfolio">
             <a className="text-lg transition-transform hover:-translate-y-1 xl:text-base">portfolio</a>

@@ -17,7 +17,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
 export default function Home({ skills }: Props) {
   return (
-    <main className="px-20 xl:px-10">
+    <main className="px-20 2xl:px-10 xl:px-5">
       <Head>
         <title>Xuan&apos;s website</title>
         <meta name="description" content="Xuan的個人網站,部落格和作品集" />

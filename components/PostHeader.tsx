@@ -18,7 +18,7 @@ const PostHeader = ({ id, title, shouldUpdateViews, isHeadingLink }: Props) => {
 
   const headingContent = isHeadingLink ? (
     <Link href={`/blog/${id}`}>
-      <a className="text-primary hover:underline">{title}</a>
+      <a className="text-primary hover:underline hover:decoration-4">{title}</a>
     </Link>
   ) : (
     title
@@ -28,10 +28,15 @@ const PostHeader = ({ id, title, shouldUpdateViews, isHeadingLink }: Props) => {
     <header>
       <h1 className="not-prose">{headingContent}</h1>
       <div className="flex items-center gap-4">
-        <span className="flex items-center gap-2 font-semibold text-primary">
+        <a
+          href="https://github.com/jason89521"
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center gap-2 font-bold text-primary no-underline hover:underline"
+        >
           <Image src={avatar} alt="avatar" className="rounded-full" width={32} height={32} />
           Xuan
-        </span>
+        </a>
         <span className="flex items-center gap-2">
           <SvgSprite category="icon" symbolId="eye" className="h-4 w-4 dark:fill-slate-300" />
           {views}
