@@ -22,7 +22,7 @@ const Blog = ({ previews }: Props) => {
         return (
           <div key={metadata.id} className="mx-auto mb-5 max-w-xl py-10 last:mb-0 xl:py-5">
             <article className="prose mb-5 max-w-none dark:prose-invert">
-              <PostHeader id={metadata.id} title={metadata.title} />
+              <PostHeader id={metadata.id} title={metadata.title} isHeadingLink />
               <Markdown>{excerpt}</Markdown>
             </article>
 
