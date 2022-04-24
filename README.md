@@ -1,15 +1,10 @@
-# 個人網站
+# Xuan
 
-除了首頁的簡介外，還有部落格以及作品集。
+A personal website.
 
-## 首頁
+## Built with
 
-目前只有列出會使用的技能
-
-## 部落格
-
-未來寫的文章都會放到這裡
-
-## 作品集
-
-還沒想好要怎麼呈現，~~應該會有一陣子都是 404~~。
+- Next.js
+- React
+- TailwindCss
+- Firebase
