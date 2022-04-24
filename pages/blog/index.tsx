@@ -12,7 +12,7 @@ type Props = {
 
 const Blog = ({ previews }: Props) => {
   return (
-    <main className="pb-10">
+    <main className="px-5 pb-10">
       <Head>
         <title>Xuan&apos;s blog</title>
       </Head>

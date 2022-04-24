@@ -19,15 +19,17 @@ export default function Post({ metadata, content }: Props) {
   const { title, description, id } = metadata;
 
   return (
-    <article className="prose mx-auto max-w-xl pt-10 pb-20 dark:prose-invert">
+    <main className="px-5">
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
 
-      <PostHeader id={id} title={title} shouldUpdateViews />
-      <Markdown>{content}</Markdown>
-    </article>
+      <article className="prose mx-auto max-w-xl pt-10 pb-20 dark:prose-invert">
+        <PostHeader id={id} title={title} shouldUpdateViews />
+        <Markdown>{content}</Markdown>
+      </article>
+    </main>
   );
 }
 

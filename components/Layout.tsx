@@ -31,7 +31,7 @@ function Layout({ children }: Props) {
 
   return (
     <div className="min-h-screen dark:bg-black dark:text-gray-100">
-      <nav className="flex items-center gap-8 px-10 py-4 text-xl font-bold capitalize shadow dark:shadow-white xl:gap-4">
+      <nav className="flex items-center gap-8 px-10 py-4 text-xl font-medium capitalize shadow dark:shadow-white xl:gap-4 xl:px-5">
         <Link href="/">
           <a className="">xuan</a>
         </Link>
