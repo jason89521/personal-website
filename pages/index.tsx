@@ -20,7 +20,7 @@ export default function Home({ skills }: Props) {
     <main>
       <Head>
         <title>Xuan&apos;s website</title>
-        <meta name="description" content="Xuan的個人網站" />
+        <meta name="description" content="Xuan的個人網站,部落格和作品集" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
