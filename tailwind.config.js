@@ -8,8 +8,29 @@ module.exports = {
         DEFAULT: {
           css: {
             pre: {
-              backgroundColor: '',
               padding: '0',
+              'background-color': '',
+            },
+            code: {
+              padding: '0.15em 0.3em',
+              'background-color': '#dcdcdc',
+              'border-radius': '5px',
+            },
+            'code::before': {
+              content: '',
+            },
+            'code::after': {
+              content: '',
+            },
+          },
+        },
+        invert: {
+          css: {
+            code: {
+              'background-color': '#6e7681',
+            },
+            'pre code': {
+              'background-color': 'transparent',
             },
           },
         },
