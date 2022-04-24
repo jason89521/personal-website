@@ -1,6 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import SvgSprite from 'components/SvgSprite';
+import ActiveLink from 'components/ActiveLink';
 
 type Props = {
   children: React.ReactNode;
@@ -8,6 +10,7 @@ type Props = {
 
 function Layout({ children }: Props) {
   const [themeToggle, setThemeToggle] = useState(true);
+  const { pathname } = useRouter();
 
   // intialize theme
   useEffect(() => {
@@ -28,14 +31,14 @@ function Layout({ children }: Props) {
 
   return (
     <div className="min-h-screen dark:bg-black dark:text-gray-100">
-      <nav className="flex items-center gap-8 px-10 py-4 capitalize shadow dark:shadow-white xl:gap-4">
+      <nav className="flex items-center gap-8 px-10 py-4 text-xl font-bold capitalize shadow dark:shadow-white xl:gap-4">
         <Link href="/">
-          <a className="text-3xl xl:text-2xl">xuan</a>
+          <a className="">xuan</a>
         </Link>
 
-        <Link href="/blog">
-          <a className="text-lg transition-transform hover:-translate-y-1 xl:text-base">blog</a>
-        </Link>
+        <ActiveLink nextLink={{ href: '/blog' }} className="transition-transform hover:-translate-y-1">
+          blog
+        </ActiveLink>
 
         {/* <Link href="/portfolio">
             <a className="text-lg transition-transform hover:-translate-y-1 xl:text-base">portfolio</a>
