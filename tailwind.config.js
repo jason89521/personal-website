@@ -35,6 +35,9 @@ module.exports = {
           },
         },
       },
+      colors: {
+        primary: 'var(--color-primary)',
+      },
     },
     screens: {
       '2xl': { max: '1400px' },

@@ -16,9 +16,9 @@ const PostHeader = ({ id, title, shouldUpdateViews }: Props) => {
 
   return (
     <header>
-      <h1>{title}</h1>
+      <h1 className="text-primary">{title}</h1>
       <div className="flex items-center gap-4">
-        <span className="flex items-center gap-2 font-semibold">
+        <span className="flex items-center gap-2 font-semibold text-primary">
           <Image src={avatar} alt="avatar" className="rounded-full" width={32} height={32} />
           Xuan
         </span>

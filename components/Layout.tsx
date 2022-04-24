@@ -27,48 +27,46 @@ function Layout({ children }: Props) {
   }, [themeToggle]);
 
   return (
-    <div className="min-h-screen dark:bg-gray-700 dark:text-gray-200">
-      <div className="mx-auto max-w-7xl 2xl:max-w-none 2xl:px-10 xl:px-5">
-        <nav className="flex items-center gap-8 border-b py-4 capitalize xl:gap-4">
-          <Link href="/">
-            <a className="text-3xl xl:text-2xl">xuan</a>
-          </Link>
+    <div className="min-h-screen dark:bg-black dark:text-gray-100">
+      <nav className="flex items-center gap-8 px-10 py-4 capitalize shadow dark:shadow-white xl:gap-4">
+        <Link href="/">
+          <a className="text-3xl xl:text-2xl">xuan</a>
+        </Link>
 
-          <Link href="/blog">
-            <a className="text-lg transition-transform hover:-translate-y-1 xl:text-base">blog</a>
-          </Link>
+        <Link href="/blog">
+          <a className="text-lg transition-transform hover:-translate-y-1 xl:text-base">blog</a>
+        </Link>
 
-          {/* <Link href="/portfolio">
+        {/* <Link href="/portfolio">
             <a className="text-lg transition-transform hover:-translate-y-1 xl:text-base">portfolio</a>
           </Link> */}
 
-          <a
-            href="https://github.com/jason89521"
-            target="_blank"
-            rel="noreferrer"
-            className="ml-auto transition-transform hover:-rotate-12 hover:scale-125"
-          >
-            <SvgSprite category="social" symbolId="github" className="h-8 w-8 dark:fill-slate-50 xl:h-6 xl:w-6" />
-          </a>
+        <a
+          href="https://github.com/jason89521"
+          target="_blank"
+          rel="noreferrer"
+          className="ml-auto transition-transform hover:-rotate-12 hover:scale-125"
+        >
+          <SvgSprite category="social" symbolId="github" className="h-8 w-8 dark:fill-slate-50 xl:h-6 xl:w-6" />
+        </a>
 
-          <label className="cursor-pointer transition-transform hover:-rotate-12 hover:scale-125">
-            <SvgSprite
-              category="theme"
-              symbolId={themeToggle ? 'sun' : 'moon'}
-              className="h-8 w-8 dark:fill-slate-50 xl:h-6 xl:w-6"
-            />
-            <input
-              type="checkbox"
-              className="hidden"
-              onChange={() => setThemeToggle(!themeToggle)}
-              checked={themeToggle}
-              value="theme"
-            />
-          </label>
-        </nav>
+        <label className="cursor-pointer transition-transform hover:-rotate-12 hover:scale-125">
+          <SvgSprite
+            category="theme"
+            symbolId={themeToggle ? 'sun' : 'moon'}
+            className="h-8 w-8 dark:fill-slate-50 xl:h-6 xl:w-6"
+          />
+          <input
+            type="checkbox"
+            className="hidden"
+            onChange={() => setThemeToggle(!themeToggle)}
+            checked={themeToggle}
+            value="theme"
+          />
+        </label>
+      </nav>
 
-        {children}
-      </div>
+      {children}
     </div>
   );
 }
