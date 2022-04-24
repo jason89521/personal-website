@@ -40,16 +40,7 @@ export default Blog;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const posts = getAllPosts().reverse();
-  const data = posts.map(post => getPostData(post));
-  const previews = await Promise.all(
-    data.map(async postData => {
-      const { metadata, excerpt } = postData;
-      return {
-        metadata,
-        excerpt,
-      };
-    })
-  );
+  const previews = posts.map(post => getPostData(post));
 
   return {
     props: {
