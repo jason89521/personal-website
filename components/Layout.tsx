@@ -31,7 +31,7 @@ function Layout({ children }: Props) {
 
   return (
     <div className="min-h-screen dark:bg-dark-800 dark:text-white">
-      <nav className="flex items-center gap-8 px-10 py-4 text-xl font-medium capitalize shadow child:transition child:duration-200 child-hover:text-primary dark:bg-dark-700 dark:shadow-none xl:gap-4 xl:px-5">
+      <nav className="flex items-center gap-8 px-10 py-4 text-xl font-medium capitalize shadow child:transition child-hover:text-primary dark:bg-dark-700 dark:shadow-none xl:gap-4 xl:px-5">
         <Link href="/">
           <a className="font-semibold">xuan</a>
         </Link>
@@ -39,10 +39,6 @@ function Layout({ children }: Props) {
         <NavLink nextLink={{ href: '/blog' }} className="hover:-translate-y-1">
           blog
         </NavLink>
-
-        {/* <Link href="/portfolio">
-            <a className="text-lg transition-transform hover:-translate-y-1 xl:text-base">portfolio</a>
-          </Link> */}
 
         <a
           href="https://github.com/jason89521"

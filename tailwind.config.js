@@ -17,7 +17,7 @@ module.exports = {
           css: {
             pre: {
               padding: '0',
-              'background-color': '',
+              'background-color': 'transparent',
             },
             code: {
               padding: '0.15em 0.3em',
