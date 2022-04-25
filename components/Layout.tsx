@@ -30,8 +30,8 @@ function Layout({ children }: Props) {
   }, [themeToggle]);
 
   return (
-    <div className="min-h-screen dark:bg-black dark:text-gray-100">
-      <nav className="flex items-center gap-8 px-10 py-4 text-xl font-medium capitalize shadow dark:shadow-white xl:gap-4 xl:px-5">
+    <div className="min-h-screen dark:bg-dark-800 dark:text-white">
+      <nav className="flex items-center gap-8 px-10 py-4 text-xl font-medium capitalize shadow child-hover:text-primary dark:bg-dark-700 dark:shadow-none xl:gap-4 xl:px-5">
         <Link href="/">
           <a className="font-semibold">xuan</a>
         </Link>
@@ -50,14 +50,14 @@ function Layout({ children }: Props) {
           rel="noreferrer"
           className="ml-auto transition-transform hover:-rotate-12 hover:scale-125"
         >
-          <SvgSprite category="social" symbolId="github" className="h-8 w-8 dark:fill-slate-50 xl:h-6 xl:w-6" />
+          <SvgSprite category="social" symbolId="github" className="h-8 w-8 dark:fill-white xl:h-6 xl:w-6" />
         </a>
 
         <label className="cursor-pointer transition-transform hover:-rotate-12 hover:scale-125">
           <SvgSprite
             category="theme"
             symbolId={themeToggle ? 'sun' : 'moon'}
-            className="h-8 w-8 dark:fill-slate-50 xl:h-6 xl:w-6"
+            className="h-8 w-8 dark:fill-white xl:h-6 xl:w-6"
           />
           <input
             type="checkbox"

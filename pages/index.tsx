@@ -17,7 +17,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
 export default function Home({ skills }: Props) {
   return (
-    <main className="px-20 2xl:px-10 xl:px-5">
+    <main>
       <Head>
         <title>Xuan&apos;s website</title>
         <meta name="description" content="Xuan的個人網站,部落格和作品集" />
@@ -28,8 +28,8 @@ export default function Home({ skills }: Props) {
         <h1 className="text-center font-serif text-8xl capitalize 2xl:text-6xl xl:text-4xl">A front-end developer</h1>
       </header>
 
-      <section className="py-4">
-        <h2 className="mb-10 text-3xl font-semibold xl:text-xl">Skills</h2>
+      <section className="py-8 px-20 dark:bg-dark-700 2xl:px-10 xl:px-5">
+        <h2 className="mb-4 text-3xl font-semibold xl:text-xl">Skills</h2>
         <div className="flex flex-wrap justify-center gap-10">
           {skills.map(skill => {
             return (
