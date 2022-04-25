@@ -3,7 +3,7 @@ import useSWR from 'swr';
 import createFetcher from 'lib/createFetcher';
 
 const UPDATE_INTERVAL = 10;
-const UPDATE_DURATION = 1500;
+const UPDATE_DURATION = 1000;
 const UPDATE_RATIO = UPDATE_INTERVAL / UPDATE_DURATION;
 
 const usePostViews = (id: string, shouldUpdate?: boolean) => {

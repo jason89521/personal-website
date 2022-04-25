@@ -22,22 +22,24 @@ export default function Post({ metadata, content, olderPost, newerPost }: Props)
   const { title, description, id } = metadata;
 
   return (
-    <main className="mx-auto max-w-post px-5 pt-10 pb-20">
+    <div className="px-5">
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
 
-      <article className="prose mb-16 max-w-none dark:prose-invert">
-        <PostHeader id={id} title={title} shouldUpdateViews />
-        <Markdown>{content}</Markdown>
-      </article>
+      <main className="mx-auto max-w-prose py-10">
+        <article className="prose mb-16 dark:prose-invert">
+          <PostHeader id={id} title={title} shouldUpdateViews />
+          <Markdown>{content}</Markdown>
+        </article>
 
-      <nav className="flex justify-between gap-10 xl:gap-5">
-        <div className="flex-1">{newerPost && <PageLink metadata={newerPost} />}</div>
-        <div className="flex-1 text-right">{olderPost && <PageLink metadata={olderPost} isOlder />}</div>
-      </nav>
-    </main>
+        <nav className="flex justify-between gap-10 xl:gap-5">
+          <div className="flex-1">{newerPost && <PageLink metadata={newerPost} />}</div>
+          <div className="flex-1 text-right">{olderPost && <PageLink metadata={olderPost} isOlder />}</div>
+        </nav>
+      </main>
+    </div>
   );
 }
 

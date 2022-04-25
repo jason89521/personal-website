@@ -25,7 +25,7 @@ const Blog = ({ previews }: Props) => {
           );
         })}
       </nav>
-      <div>??</div>
+
       <main className="pb-10 md:mx-auto">
         <Head>
           <title>Xuan&apos;s blog</title>
