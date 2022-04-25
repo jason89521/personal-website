@@ -2,6 +2,7 @@
 const plugin = require('tailwindcss/plugin');
 
 const customPlugin = plugin(({ addVariant }) => {
+  addVariant('child', '& > *');
   addVariant('child-hover', '& > *:hover');
 });
 
