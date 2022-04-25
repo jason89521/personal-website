@@ -13,8 +13,8 @@ type Components = Partial<Omit<NormalComponents, keyof SpecialComponents> & Spec
 
 type Props = Omit<ReactMarkdownOptions, 'rehypePlugins' | 'remarkPlugins'>;
 
-function Markdown({ children, components, ...rest }: Props) {
-  const codeComponent: Components = {
+function Markdown({ children, ...rest }: Props) {
+  const components: Components = {
     code({ node, inline, className, children, ...props }) {
       const match = /language-(\w+)/.exec(className || '');
       if (inline || !match)
@@ -30,15 +30,20 @@ function Markdown({ children, components, ...rest }: Props) {
         </SyntaxHighlighter>
       );
     },
-  };
+    a({ node, href, target, rel, ...props }) {
+      const isInternal = href?.startsWith('/');
+      target = isInternal ? '_self' : '_blank';
+      rel = isInternal ? rel : 'noreferrer';
 
-  const mergedComponents = Object.assign(codeComponent, components);
+      return <a href={href} target={target} rel={rel} className="text-primary hover:opacity-75" {...props} />;
+    },
+  };
 
   return (
     <ReactMarkdown
       rehypePlugins={[rehypeRaw, rehypeSlug]}
       remarkPlugins={[remarkGfm, remarkToc]}
-      components={mergedComponents}
+      components={components}
       {...rest}
     >
       {children}
