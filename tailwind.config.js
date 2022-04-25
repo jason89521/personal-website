@@ -65,6 +65,7 @@ module.exports = {
     screens: {
       '2xl': { max: '1400px' },
       xl: { max: '1000px' },
+      md: { max: '700px' },
     },
   },
   plugins: [require('@tailwindcss/typography'), customPlugin],

@@ -26,7 +26,9 @@ const PostHeader = ({ id, title, shouldUpdateViews, isHeadingLink }: Props) => {
 
   return (
     <header>
-      <h1 className="not-prose">{headingContent}</h1>
+      <h1 className="not-prose" id={id}>
+        {headingContent}
+      </h1>
       <div className="flex items-center gap-4">
         <a
           href="https://github.com/jason89521"

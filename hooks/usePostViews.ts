@@ -6,14 +6,6 @@ const UPDATE_INTERVAL = 10;
 const UPDATE_DURATION = 1500;
 const UPDATE_RATIO = UPDATE_INTERVAL / UPDATE_DURATION;
 
-const progressToTotal = (total: number) => {
-  return (oldValue: number) => {
-    const nextValue = oldValue + Math.ceil(total * UPDATE_RATIO);
-    const newValue = nextValue > total ? total : nextValue;
-    return newValue;
-  };
-};
-
 const usePostViews = (id: string, shouldUpdate?: boolean) => {
   const [views, setViews] = useState(0);
   const { data } = useSWR<{ views: number }>(`/api/post/${id}`, createFetcher());
@@ -27,7 +19,11 @@ const usePostViews = (id: string, shouldUpdate?: boolean) => {
     if (!data || views === data.views) return;
 
     setTimeout(() => {
-      setViews(progressToTotal(data.views));
+      setViews((oldViews: number) => {
+        const nextViews = oldViews + Math.ceil(data.views * UPDATE_RATIO);
+        const newViews = nextViews > data.views ? data.views : nextViews;
+        return newViews;
+      });
     }, UPDATE_INTERVAL);
   }, [views, data]);
 

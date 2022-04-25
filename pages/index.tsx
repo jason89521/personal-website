@@ -24,7 +24,7 @@ export default function Home({ skills }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="py-32">
+      <header className="py-32 px-5">
         <h1 className="text-center font-serif text-8xl capitalize 2xl:text-6xl xl:text-4xl">A front-end developer</h1>
       </header>
 

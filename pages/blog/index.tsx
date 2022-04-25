@@ -12,27 +12,42 @@ type Props = {
 
 const Blog = ({ previews }: Props) => {
   return (
-    <main className="px-5 pb-10">
-      <Head>
-        <title>Xuan&apos;s blog</title>
-      </Head>
+    <div className="flex gap-20 px-40 py-10 2xl:gap-10 2xl:px-20 xl:gap-5 xl:px-5 md:block">
+      <nav className="sticky top-10 shrink-0 basis-60 self-start xl:basis-40 md:hidden">
+        {previews.map(preview => {
+          const { id, title } = preview.metadata;
+          return (
+            <div key={id} className="mb-4 last:mb-0">
+              <Link href={`#${id}`}>
+                <a className="font-semibold decoration-2 hover:text-primary hover:underline">{title}</a>
+              </Link>
+            </div>
+          );
+        })}
+      </nav>
+      <div>??</div>
+      <main className="pb-10 md:mx-auto">
+        <Head>
+          <title>Xuan&apos;s blog</title>
+        </Head>
 
-      {previews.map(preview => {
-        const { metadata, excerpt } = preview;
-        return (
-          <div key={metadata.id} className="mx-auto mb-5 max-w-post py-10 last:mb-0 xl:py-5">
-            <article className="prose mb-8 max-w-none dark:prose-invert">
-              <PostHeader id={metadata.id} title={metadata.title} isHeadingLink />
-              <Markdown>{excerpt}</Markdown>
-            </article>
+        {previews.map(preview => {
+          const { metadata, excerpt } = preview;
+          return (
+            <div key={metadata.id} className="mb-20 last:mb-0">
+              <article className="prose mb-8 dark:prose-invert">
+                <PostHeader id={metadata.id} title={metadata.title} isHeadingLink />
+                <Markdown>{excerpt}</Markdown>
+              </article>
 
-            <Link href={`/blog/${metadata.id}`} passHref>
-              <a className="text-lg font-bold text-primary transition-all hover:underline">Read More</a>
-            </Link>
-          </div>
-        );
-      })}
-    </main>
+              <Link href={`/blog/${metadata.id}`} passHref>
+                <a className="text-lg font-bold text-primary transition hover:underline">Read More</a>
+              </Link>
+            </div>
+          );
+        })}
+      </main>
+    </div>
   );
 };
 
