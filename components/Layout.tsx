@@ -14,15 +14,18 @@ function Layout({ children }: Props) {
   const prevScrollYRef = useRef(0);
 
   useEffect(() => {
+    const rootEl = document.documentElement;
     const listener = () => {
       const prevScrollY = prevScrollYRef.current;
-      if (window.scrollY > prevScrollY) {
-        const navHeight = parseFloat(getComputedStyle(navRef.current).getPropertyValue('height'));
-        window.scrollY > navHeight && setNavTranslate('-translate-y-16');
+      const navHeight = parseFloat(getComputedStyle(navRef.current).getPropertyValue('height'));
+      // add threshold on both scrolling down and scrolling up to prevent scrolling on mobile devices from weird behavior
+      if (rootEl.scrollTop > prevScrollY) {
+        rootEl.scrollTop > navHeight && setNavTranslate('-translate-y-16');
       } else {
-        setNavTranslate('');
+        const threshold = rootEl.scrollHeight - rootEl.clientHeight - navHeight;
+        rootEl.scrollTop < threshold && setNavTranslate('');
       }
-      prevScrollYRef.current = window.scrollY;
+      prevScrollYRef.current = rootEl.scrollTop;
     };
 
     window.addEventListener('scroll', listener, { passive: true });
