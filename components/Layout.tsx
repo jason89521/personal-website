@@ -10,13 +10,15 @@ type Props = {
 
 function Layout({ children }: Props) {
   const [navTranslate, setNavTranslate] = useState('');
+  const navRef = useRef<HTMLElement>(null!);
   const prevScrollYRef = useRef(0);
 
   useEffect(() => {
     const listener = () => {
       const prevScrollY = prevScrollYRef.current;
       if (window.scrollY > prevScrollY) {
-        setNavTranslate('-translate-y-16');
+        const navHeight = parseFloat(getComputedStyle(navRef.current).getPropertyValue('height'));
+        window.scrollY > navHeight && setNavTranslate('-translate-y-16');
       } else {
         setNavTranslate('');
       }
@@ -33,7 +35,8 @@ function Layout({ children }: Props) {
   return (
     <div className="min-h-screen dark:bg-dark-800 dark:text-white">
       <nav
-        className={`${navTranslate} sticky top-0 z-50 flex h-top-nav items-center gap-8 px-10 py-4 text-xl font-medium capitalize shadow transition child:transition child-hover:text-primary dark:bg-dark-700 dark:shadow-none xl:gap-4 xl:px-5`}
+        ref={navRef}
+        className={`${navTranslate} sticky top-0 z-50 flex h-16 items-center gap-8 px-10 py-4 text-xl font-medium capitalize shadow transition child:transition child-hover:text-primary dark:bg-dark-700 dark:shadow-none xl:gap-4 xl:px-5`}
       >
         <Link href="/">
           <a className="font-semibold">xuan</a>

@@ -13,7 +13,7 @@ type Props = {
 const Blog = ({ previews }: Props) => {
   return (
     <div className="mx-auto flex max-w-6xl gap-20 py-10 px-10 2xl:gap-10 xl:gap-5 xl:px-5 md:block">
-      <nav className="sticky top-[calc(var(--top-nav-h)+2.5rem)] shrink-0 basis-60 self-start xl:basis-40 md:hidden">
+      <nav className="sticky top-[6.5rem] shrink-0 basis-60 self-start xl:basis-40 md:hidden">
         {previews.map(preview => {
           const { id, title } = preview.metadata;
           return (
