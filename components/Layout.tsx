@@ -1,34 +1,14 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import SvgSprite from 'components/SvgSprite';
 import NavLink from 'components/NavLink';
+import ThemeToggle from 'components/ThemeToggle';
 
 type Props = {
   children: React.ReactNode;
 };
 
 function Layout({ children }: Props) {
-  const [themeToggle, setThemeToggle] = useState(true);
-  const { pathname } = useRouter();
-
-  // intialize theme
-  useEffect(() => {
-    const themePreference = localStorage.getItem('theme');
-    if (themePreference === 'dark') setThemeToggle(false);
-  }, []);
-
-  useEffect(() => {
-    if (themeToggle) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-      return;
-    }
-
-    document.documentElement.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
-  }, [themeToggle]);
-
   return (
     <div className="min-h-screen dark:bg-dark-800 dark:text-white">
       <nav className="sticky top-0 z-50 flex h-top-nav items-center gap-8 px-10 py-4 text-xl font-medium capitalize shadow child:transition child-hover:text-primary dark:bg-dark-700 dark:shadow-none xl:gap-4 xl:px-5">
@@ -49,20 +29,7 @@ function Layout({ children }: Props) {
           <SvgSprite category="social" symbolId="github" className="h-8 w-8 dark:fill-white xl:h-6 xl:w-6" />
         </a>
 
-        <label className="cursor-pointer hover:-rotate-12 hover:scale-125">
-          <SvgSprite
-            category="theme"
-            symbolId={themeToggle ? 'sun' : 'moon'}
-            className="h-8 w-8 dark:fill-white xl:h-6 xl:w-6"
-          />
-          <input
-            type="checkbox"
-            className="hidden"
-            onChange={() => setThemeToggle(!themeToggle)}
-            checked={themeToggle}
-            value="theme"
-          />
-        </label>
+        <ThemeToggle className="cursor-pointer hover:-rotate-12 hover:scale-125" />
       </nav>
 
       {children}
