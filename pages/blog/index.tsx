@@ -18,7 +18,7 @@ const Blog = ({ previews }: Props) => {
           const { id, title } = preview.metadata;
           return (
             <div key={id} className="mb-4 last:mb-0">
-              <Link href={`#${id}`}>
+              <Link href={`/blog/${id}`}>
                 <a className="font-semibold decoration-2 hover:text-primary hover:underline">{title}</a>
               </Link>
             </div>
