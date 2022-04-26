@@ -61,6 +61,9 @@ module.exports = {
       maxWidth: {
         post: '45rem',
       },
+      height: {
+        'top-nav': 'var(--top-nav-h)',
+      },
     },
     screens: {
       '2xl': { max: '1400px' },

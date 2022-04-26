@@ -31,7 +31,7 @@ function Layout({ children }: Props) {
 
   return (
     <div className="min-h-screen dark:bg-dark-800 dark:text-white">
-      <nav className="flex items-center gap-8 px-10 py-4 text-xl font-medium capitalize shadow child:transition child-hover:text-primary dark:bg-dark-700 dark:shadow-none xl:gap-4 xl:px-5">
+      <nav className="sticky top-0 z-50 flex h-top-nav items-center gap-8 px-10 py-4 text-xl font-medium capitalize shadow child:transition child-hover:text-primary dark:bg-dark-700 dark:shadow-none xl:gap-4 xl:px-5">
         <Link href="/">
           <a className="font-semibold">xuan</a>
         </Link>
