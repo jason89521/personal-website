@@ -39,7 +39,7 @@ function Layout({ children }: Props) {
     <div className="min-h-screen dark:bg-dark-800 dark:text-white">
       <nav
         ref={navRef}
-        className={`${navTranslate} sticky top-0 z-50 flex h-16 items-center gap-8 px-10 py-4 text-xl font-medium capitalize shadow transition child:transition child-hover:text-primary dark:bg-dark-700 dark:shadow-none xl:gap-4 xl:px-5`}
+        className={`${navTranslate} sticky top-0 z-50 flex h-16 items-center gap-8 bg-white px-10 py-4 text-xl font-medium capitalize shadow transition child:transition child-hover:text-primary dark:bg-dark-700 dark:shadow-none xl:gap-4 xl:px-5`}
       >
         <Link href="/">
           <a className="font-semibold">xuan</a>
