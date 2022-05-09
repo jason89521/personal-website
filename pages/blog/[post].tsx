@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { getPostData, getAllPosts } from 'lib/post';
 import Markdown from 'components/Markdown';
 import PostHeader from 'components/PostHeader';
-import PageLink from 'components/PostPageLink';
+import PostPageLink from 'components/PostPageLink';
 import BlogLayout from 'components/Layouts/BlogLayout';
 
 type Props = {
@@ -35,8 +35,8 @@ export default function Post({ metadata, content, olderPost, newerPost, previews
       </article>
 
       <nav className="flex justify-between gap-10 xl:gap-5">
-        <div className="flex-1">{newerPost && <PageLink metadata={newerPost} />}</div>
-        <div className="flex-1 text-right">{olderPost && <PageLink metadata={olderPost} isOlder />}</div>
+        <div className="flex-1">{newerPost && <PostPageLink metadata={newerPost} />}</div>
+        <div className="flex-1 text-right">{olderPost && <PostPageLink metadata={olderPost} isOlder />}</div>
       </nav>
     </BlogLayout>
   );

@@ -9,3 +9,9 @@
 .dark {
   --color-primary: #22d3ee;
 }
+
+@media screen and (max-width: 700px) {
+  article.prose {
+    @apply max-w-none;
+  }
+}
