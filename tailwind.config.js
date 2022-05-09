@@ -20,7 +20,7 @@ module.exports = {
               'background-color': 'transparent',
             },
             code: {
-              padding: '0.15em 0.3em',
+              padding: '0.1em 0.3em',
               'background-color': '#dcdcdc',
               'border-radius': '5px',
             },
