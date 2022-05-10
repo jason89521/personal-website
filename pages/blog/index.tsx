@@ -14,6 +14,11 @@ type Props = {
 const Blog = ({ previews }: Props) => {
   return (
     <BlogLayout previews={previews}>
+      <Head>
+        <title>Xuan&apos;s blog</title>
+        <meta name="description" content="Xuan 的部落格文章，不定期更新" />
+      </Head>
+
       {previews.map(preview => {
         const { metadata, excerpt } = preview;
         return (
