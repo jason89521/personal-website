@@ -54,7 +54,7 @@ function Layout({ children }: Props) {
           target="_blank"
           rel="noreferrer"
           className="ml-auto hover:-rotate-12 hover:scale-125"
-          title="My GitHub profile"
+          title="我的 GitHub 連結"
         >
           <SvgSprite category="social" symbolId="github" className="h-8 w-8 dark:fill-white xl:h-6 xl:w-6" />
         </a>

@@ -26,7 +26,7 @@ const ThemeToggle = ({ className }: Props) => {
   }, [themeToggle]);
 
   return (
-    <label className={className}>
+    <label className={className} tabIndex={0} onKeyDown={() => setThemeToggle(!themeToggle)}>
       <SvgSprite
         category="theme"
         symbolId={themeToggle ? 'sun' : 'moon'}
