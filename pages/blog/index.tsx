@@ -29,7 +29,7 @@ const Blog = ({ previews }: Props) => {
             </article>
 
             <Link href={`/blog/${metadata.id}`} passHref>
-              <a className="text-lg font-bold text-primary transition hover:underline">Read More</a>
+              <a className="text-lg font-bold text-primary transition hover:underline">繼續閱讀</a>
             </Link>
           </div>
         );
