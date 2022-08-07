@@ -36,3 +36,7 @@ yarn-error.log*
 
 # firebase
 firebase-admin.json
+
+# vscode
+
+.vscode
