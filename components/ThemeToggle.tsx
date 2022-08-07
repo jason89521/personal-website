@@ -8,7 +8,7 @@ type Props = {
 const ThemeToggle = ({ className }: Props) => {
   const [themeToggle, setThemeToggle] = useState(true);
 
-  // intialize theme
+  // initialize theme
   useEffect(() => {
     const themePreference = localStorage.getItem('theme');
     if (themePreference === 'dark') setThemeToggle(false);
