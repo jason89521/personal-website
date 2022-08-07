@@ -1,6 +1,7 @@
 import type { NormalComponents } from 'react-markdown/lib/complex-types';
 import type { SpecialComponents } from 'react-markdown/lib/ast-to-react';
 import type { ReactMarkdownOptions } from 'react-markdown/lib/react-markdown';
+
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkToc from 'remark-toc';
@@ -25,7 +26,7 @@ function Markdown({ children, ...rest }: Props) {
         );
 
       return (
-        <SyntaxHighlighter style={vscDarkPlus} language={match[1]} {...props}>
+        <SyntaxHighlighter style={vscDarkPlus as any} language={match[1]} {...props}>
           {String(children).replace(/\n$/, '')}
         </SyntaxHighlighter>
       );
